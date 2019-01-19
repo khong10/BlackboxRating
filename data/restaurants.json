@@ -1,0 +1,58 @@
+[
+    {
+      "num": 1,
+      "name": "TianTian Restaurant",
+      "contact": "935-74-9919",
+      "addressStreet": "8 Arapahoe Park",
+      "addressCity": "New York",
+      "addressState": "NY",
+      "addressPostal": "20719",
+      "cuisine": "Chinese",
+      "review": "Review",
+      "rate": 3.5,
+      "area": 1,
+      "opendate": "4/30/2014"
+    },
+    {
+      "num": 2,
+      "name": "Kim Restaurant",
+      "contact": "906-43-6273",
+      "addressStreet": "66965 Shelley Circle",
+      "addressCity": "New York",
+      "addressState": "NY",
+      "addressPostal": "33605",
+      "cuisine": "Korean",
+      "review": "Review",
+      "rate": 3.5,
+      "area": 1,
+      "opendate": "6/25/2016"
+    },
+    {
+      "num": 3,
+      "name": "Thai Food",
+      "contact": "985-80-6616",
+      "addressStreet": "24665 Scoville Parkway",
+      "addressCity": "New York",
+      "addressState": "NY",
+      "addressPostal": "14609",
+      "cuisine": "Thai",
+      "review": "Review",
+      "rate": 3.4,
+      "area": 2,
+      "opendate": "2/1/2009"
+    },
+    {
+      "num": 4,
+      "name": "Asia Food",
+      "contact": "996-45-9010",
+      "addressStreet": "0464 Mitchell Road",
+      "addressCity": "New York",
+      "addressState": "NY",
+      "addressPostal": "50335",
+      "cuisine": "Chinese",
+      "review": "Review",
+      "rate": 4.0,
+      "area": 2,
+      "opendate": "8/26/2004"
+    }
+  ]

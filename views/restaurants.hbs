@@ -1,0 +1,42 @@
+<div class="row">
+<div class="col-md-12">
+<h2>Restaurants Ranking</h2>
+<hr/>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <th>Restaurant&nbsp;Num</th>
+            <th>Restaurant&nbsp;Name</th>
+            <th>Contact&nbsp;Num</th>
+            <th>Address</th>
+            <th>Cuisine</th>
+            <th>Review</th>
+            <th>Rate</th>
+            <th>Area</th>
+            <th>Open&nbsp;Date</th>
+        </thead>
+        <tbody>
+            {{#each restaurants}}
+            <tr>
+                <td>{{this.num}}</td>
+                <td><a href="/transit">{{this.name}}</a></td>
+                <td><a href="tel:+{{this.contact}}">{{this.contact}}</a></td>
+                <td>{{this.addressStreet}}{{this.addressCity}}{{this.addressState}}{{this.addressPostal}}</td>
+                <td>{{this.cuisine}}</td>
+                <td>{{this.review}}</td>
+                <td>{{this.rate}}</td>
+                <td>{{this.area}}</td>
+                <td>{{this.opendate}}</td>
+            </tr>
+            {{/each}}
+
+        </tbody>
+    </table>
+</div>
+</div>
+{{#unless restaurants}}
+<div class="col-md-12 text-center">
+<strong>{{message}}</strong>
+</div>
+{{/unless}}
+</div>

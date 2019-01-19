@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="col-md-12">
+        <style>
+            #map {
+                height: 450px;
+                width: 80%;
+            }
+        </style>
+        <h2>Restaurant</h2>
+        <hr />
+        <div class="table-responsive">
+            <h1>Code Catcher Google Map</h1>
+            <div id="map"></div>
+            <script>
+                var map;
+                var infowindow;
+
+                var request;
+                var service;
+                var markers = [];
+
+                function initMap() {
+                    var toronto = { lat: 43.6532, lng: -79.3832 };
+
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: toronto,
+                        zoom: 14
+                    });
+
+                    request = {
+                        location: toronto,
+                        radius: 2000,
+                        types: ['restaurant']
+                    };
+
+                    infowindow = new google.maps.InfoWindow();
+                    service = new google.maps.places.PlacesService(map);
+                    service.nearbySearch(request, callback);
+
+                    google.maps.event.addListener(map, 'rightclick', function (event) {
+                        map.setCenter(event.latLng)
+                        clearResults(markers)
+
+                        var request2 = {
+                            location: event.latLng, // wherever we click!
+                            radius: 2000,
+                            types: ['restaurant']
+                        };
+                        service.nearbySearch(request2, callback);
+                    })
+
+                }
+
+                function callback(results, status) {
+                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                        for (var i = 0; i < results.length; i++) {
+                            markers.push(createMarker(results[i]));
+                        }
+                    }
+                }
+
+                function createMarker(place) {
+                    var placeLoc = place.geometry.location;
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: place.geometry.location
+                    });
+
+                    google.maps.event.addListener(marker, 'click', function () {
+
+                        var request = {
+                            reference: place.reference
+                        };
+                        service.getDetails(request, function (details, status) {
+
+                            infowindow.setContent([
+                                details.name,
+                                details.formatted_address,
+                                details.website,
+                                details.rating,
+                                details.formatted_phone_number].join("<br />"));
+                            infowindow.open(map, marker);
+                        });
+                        // infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.place_id + '</div>');
+                        // infowindow.open(map, this);
+                    });
+                    return marker;
+                }
+
+                // clear markers
+                function clearResults(markers) {
+                    for (var m in markers) {
+                        markers[m].setMap(null)
+                    }
+                    markers = []
+                }
+
+            </script>
+
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgshDZ4teu-OHyWLncRWIQ6XHAsu9iYdg&libraries=places&callback=initMap"
+                async defer></script>
+        </div>
+    </div>
+</div>
